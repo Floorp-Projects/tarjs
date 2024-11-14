@@ -4,6 +4,11 @@ export interface ITarFileInfo {
   name: string;
   type: TarFileType;
   size: number;
+  uid: number;
+  gid: number;
+  mode: number;
+  user: string;
+  group: string;
   headerOffset: number;
 }
 
