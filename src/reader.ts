@@ -47,6 +47,8 @@ export function loadTarFile(buffer: ArrayBuffer) {
     const fileUid = readFileUid(buffer, offset);
     const fileGid = readFileGid(buffer, offset);
     const fileMode = readFileMode(buffer, offset);
+    const fileUname = readFileUname(buffer, offset);
+    const fileGname = readFileGname(buffer, offset);
 
     fileInfos.push({
       name: fileName,
@@ -55,6 +57,8 @@ export function loadTarFile(buffer: ArrayBuffer) {
       uid: fileUid,
       gid: fileGid,
       mode: fileMode,
+      uname: fileUname,
+      gname: fileGname,
       headerOffset: offset,
     });
 
@@ -107,6 +111,16 @@ function readFileMode(buffer: ArrayBuffer, offset: number) {
   const view = new Uint8Array(buffer, offset + 100, 8);
   const modeStr = utf8Decode(view);
   return parseInt(modeStr, 8);
+}
+
+function readFileUname(buffer: ArrayBuffer, offset: number) {
+  // offset = 265, length = 32
+  return readString(buffer, offset + 265, 32);
+}
+
+function readFileGname(buffer: ArrayBuffer, offset: number) {
+  // offset = 297, length = 32
+  return readString(buffer, offset + 297, 32);
 }
 
 export function readFileBlob(
