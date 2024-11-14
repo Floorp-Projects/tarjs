@@ -1,5 +1,5 @@
 import plaid from '@gera2ld/plaid';
-import pkg from './package.json' assert { type: 'json' };
+import pkg from './package.json' with { type: 'json' };
 
 const { defaultOptions, getRollupExternal, getRollupPlugins } = plaid;
 
