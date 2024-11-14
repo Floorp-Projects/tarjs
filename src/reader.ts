@@ -110,7 +110,7 @@ function readFileMode(buffer: ArrayBuffer, offset: number) {
   // offset = 100, length = 8
   const view = new Uint8Array(buffer, offset + 100, 8);
   const modeStr = utf8Decode(view);
-  return parseInt(modeStr, 8);
+  return parseInt(modeStr);
 }
 
 function readFileUname(buffer: ArrayBuffer, offset: number) {
