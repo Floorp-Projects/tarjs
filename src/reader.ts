@@ -57,8 +57,8 @@ export function loadTarFile(buffer: ArrayBuffer) {
       uid: fileUid,
       gid: fileGid,
       mode: fileMode,
-      uname: fileUname,
-      gname: fileGname,
+      user: fileUname,
+      group: fileGname,
       headerOffset: offset,
     });
 
